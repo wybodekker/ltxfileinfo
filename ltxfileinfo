@@ -216,7 +216,6 @@ handle_options() {
       shift
    done
    args=( "$@" )
-   return ${#args}
 }
 
 # remove leading and trailing whitespace from a string
@@ -338,7 +337,8 @@ function display {
 
 excheck getopt mktemp pdflatex kpsewhich
 
-handle_options "$@" || set "${args[@]}"
+handle_options "$@"
+set -- "${args[@]}"
 
 arg=$1
 case $arg in
